@@ -2,7 +2,8 @@
 
 cp -Rv /tmp/src/* /var/www/html
 
-# Ugly
-chmod -v 775 /var/www/html/tmp /var/www/html/log
-
-cd /var/www/html; bundle install
+# Run bundle install only when running in a ruby container.
+if [ -f /usr/local/bin/bundle ]; then
+	cd /var/www/html; bundle install
+	chmod -v 775 /var/www/html/tmp /var/www/html/log
+fi
