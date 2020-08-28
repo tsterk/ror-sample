@@ -1,4 +1,5 @@
 #!/bin/sh
 
 echo "# Starting rails server..."
+gem install rack
 exec rackup -p /tmp/rack-custom.pid --host 0.0.0.0 --port 3000
